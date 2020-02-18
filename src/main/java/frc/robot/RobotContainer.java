@@ -27,7 +27,7 @@ public class RobotContainer {
   private final Collector collector = new Collector();
   private final Shooter shooter = new Shooter();
 
-  //Unfinished subsystems -> need a prototype first
+  //Unfinished subsystems -> need testing
   private final Hopper hopper = new Hopper();
   private final Climber climber = new Climber();
 
@@ -44,7 +44,7 @@ public class RobotContainer {
   private final Collect collect = new Collect(collector, () -> xbox.getAButton());      //currently runs with the A button
   private final Shoot shoot = new Shoot(shooter, () -> flight.getRawButton(1));         //currently runs with the flight trigger
   
-  //Unfinished commands -> need a prototype first
+  //Unfinished commands -> need testing
   private final MoveBalls hopp = new MoveBalls(hopper, () -> flight.getRawButtonPressed(2));   //currently runs with thumb button on flight stick
   private final Climb climb = new Climb(climber, () -> flight.getRawButtonPressed(12)); //currently runs with base button #12 on flight stick
 
