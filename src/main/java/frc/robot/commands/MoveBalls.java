@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import java.util.function.BooleanSupplier;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Hopper;
 
@@ -37,7 +38,9 @@ public class MoveBalls extends CommandBase {
   public void execute() {
     running = button.getAsBoolean() ? !running : running;
     hopper.runFeeders(running);
-    hopper.runBelts(running);
+    hopper.runBelts(running, false);
+    SmartDashboard.putBoolean("Move Balls", running);
+    SmartDashboard.putBoolean("Move Balls 2", SmartDashboard.getBoolean("Move Balls", false));
   }
 
   // Called once the command ends or is interrupted.

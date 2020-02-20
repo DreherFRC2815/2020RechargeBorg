@@ -5,60 +5,55 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.autoCommands;
 
-import java.util.function.BooleanSupplier;
-import java.util.function.DoubleSupplier;
-
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Collector;
 
-public class Collect extends CommandBase {
+public class AutoCollect extends CommandBase {
   //subsystem
   private final Collector collector;
-  
-  //use one or the other depending on later input preferences
-  private DoubleSupplier axis;
-  private BooleanSupplier button;
 
-  public Collect(Collector c, DoubleSupplier d) {
+  //inputs
+  private final double time;
+  private boolean done = false;
+
+  private Timer timer = new Timer();
+
+  public AutoCollect(Collector c, double t) {
     // Use addRequirements() here to declare subsystem dependencies.
     collector = c;
-    axis = d;
-
-    addRequirements(collector);
-  }
-
-  public Collect(Collector c, BooleanSupplier b){
-    collector = c;
-    button = b;
-
+    time = t;
     addRequirements(collector);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    collector.extendSystem(true);
+    timer.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //this code will make sure that the correct input is fed in to the subsystem
-    //it can be deleted later when input choice has been made
-    collector.collect(button.getAsBoolean());
+    if(timer.get() < time){
+      collector.collect(true);
+    }
+    else{
+      collector.collect(false);
+      done = true;
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    collector.extendSystem(false);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return done;
   }
 }

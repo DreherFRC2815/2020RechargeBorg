@@ -31,7 +31,7 @@ public class Collector extends SubsystemBase {
   public void collect(boolean b){
     //while b is true, the motor will be at .5 otherwise at 0
     //try to replace .5 with a value from constants later on if this run method is chosen
-    motor.set(b ? .5 : 0);
+    motor.set(b ? -Constants.collectSpeed : 0);
   }
 
   public void collect(double d){

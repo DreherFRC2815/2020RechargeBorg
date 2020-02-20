@@ -35,14 +35,8 @@ public class Shooter extends SubsystemBase {
 
   //do-stuff method. setting values for the SparkMax's
   public void shoot(boolean b){
-    if(b){
-      maxes[0].set(Constants.shooterPower);
-      maxes[1].set(-Constants.shooterPower);
-    }
-    else{
-      maxes[0].set(0);
-      maxes[1].set(0);
-    }
+    maxes[0].set(b ? Constants.shooterPower : 0);
+    maxes[1].set(b ? -Constants.shooterPower : 0);
   }
 
   @Override

@@ -13,7 +13,7 @@ import frc.robot.Constants;
 
 public class Climber extends SubsystemBase {
   //system has 2 Solenoids for 4 pistons
-  private DoubleSolenoid[] solenoids; 
+  private DoubleSolenoid[] solenoids = new DoubleSolenoid[2]; 
 
   public Climber() {
     //initiating DoubleSolenoids

@@ -5,60 +5,72 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.autoCommands;
 
-import java.util.function.BooleanSupplier;
-import java.util.function.DoubleSupplier;
-
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Collector;
+import frc.robot.Constants;
+import frc.robot.subsystems.Hopper;
+import frc.robot.subsystems.Shooter;
 
-public class Collect extends CommandBase {
-  //subsystem
-  private final Collector collector;
+public class AutoShoot extends CommandBase {
+  //subsystems
+  private final Shooter shooter;
+  private final Hopper hopper;
+
+  //inputs
+  private double time;
+  private boolean downPulse;
+  private boolean done = false;
+
+  private Timer timer = new Timer();
   
-  //use one or the other depending on later input preferences
-  private DoubleSupplier axis;
-  private BooleanSupplier button;
-
-  public Collect(Collector c, DoubleSupplier d) {
+  public AutoShoot(Shooter s, Hopper h, double t, boolean dP) {
     // Use addRequirements() here to declare subsystem dependencies.
-    collector = c;
-    axis = d;
-
-    addRequirements(collector);
-  }
-
-  public Collect(Collector c, BooleanSupplier b){
-    collector = c;
-    button = b;
-
-    addRequirements(collector);
+    shooter = s;
+    hopper = h;
+    time = t;
+    downPulse = dP;
+    addRequirements(shooter, hopper);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    collector.extendSystem(true);
+    timer.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //this code will make sure that the correct input is fed in to the subsystem
-    //it can be deleted later when input choice has been made
-    collector.collect(button.getAsBoolean());
+    if(downPulse){
+      if(timer.get() < Constants.beltDownPulse){
+        hopper.runBelts(true, true);
+        shooter.shoot(true);
+      }
+      else{
+        hopper.runBelts(false, true);
+        downPulse = false;
+        timer.reset();
+      }
+    }
+    else if(timer.get() < time){
+      hopper.runBelts(true, false);
+      shooter.shoot(true);
+    }
+    else{
+      done = true;
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    collector.extendSystem(false);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return done;
   }
 }
