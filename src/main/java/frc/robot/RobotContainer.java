@@ -26,6 +26,7 @@ public class RobotContainer {
   private final DriveTrain driveTrain = new DriveTrain();
   private final Collector collector = new Collector();
   private final Shooter shooter = new Shooter();
+  private final Stats stats = new Stats();
 
   //Unfinished subsystems -> need testing
   private final Hopper hopper = new Hopper();
@@ -51,6 +52,9 @@ public class RobotContainer {
   //Auto command
   // private final 
 
+  //Shuffleboard/smartdashboard integration and statistics
+  private final UpdateStats sickTatsYo = new UpdateStats(stats, () -> {return true;});
+
   //cameras
   private CameraServer camera1 = CameraServer.getInstance();
   private CameraServer camera2 = CameraServer.getInstance();
@@ -62,6 +66,7 @@ public class RobotContainer {
     shooter.setDefaultCommand(shoot);
     hopper.setDefaultCommand(hopp);
     climber.setDefaultCommand(climb);
+    stats.setDefaultCommand(sickTatsYo);
 
     //start cameras
     camera1.startAutomaticCapture();
