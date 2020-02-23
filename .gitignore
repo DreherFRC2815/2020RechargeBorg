@@ -157,5 +157,9 @@ gradle-app.setting
 bin/
 imgui.ini
 
+<<<<<<< HEAD
 
+=======
+.idea/
+>>>>>>> 5cf7fd07a801c1d05592a73edf966247f4766883
 # End of https://www.gitignore.io/api/c++,java,linux,macos,gradle,windows,visualstudiocode
