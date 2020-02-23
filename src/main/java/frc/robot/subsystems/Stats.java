@@ -7,12 +7,15 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Stats extends SubsystemBase {
   private double batteryVoltage, matchTime;
   private boolean enabled, auto;
+  private DriverStation drvrst;
 
   public Stats() {
       batteryVoltage = 0;
@@ -22,10 +25,17 @@ public class Stats extends SubsystemBase {
   }
 
   public void update() {
-      SmartDashboard.putNumber("Battery Voltage", batteryVoltage);
-      SmartDashboard.putNumber("Match Time", matchTime);
-      SmartDashboard.putBoolean("Enabled", enabled);
-      SmartDashboard.putBoolean("Auto", auto);
+    drvrst = DriverStation.getInstance();
+
+    batteryVoltage = RobotController.getBatteryVoltage();
+    matchTime = drvrst.getMatchTime();
+    enabled = drvrst.isEnabled();
+    auto = drvrst.isAutonomous();
+
+    SmartDashboard.putNumber("Battery Voltage", batteryVoltage);
+    SmartDashboard.putNumber("Match Time", matchTime);
+    SmartDashboard.putBoolean("Enabled", enabled);
+    SmartDashboard.putBoolean("Auto", auto);
   }
 
   @Override
