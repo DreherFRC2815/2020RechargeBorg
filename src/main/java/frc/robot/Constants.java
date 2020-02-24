@@ -17,13 +17,13 @@ package frc.robot;
  */
 public final class Constants {
     //CAN Devices
-    public static final int[] drivers = {1,2,3,4};          //DriveTrain TalonSRXs
+    public static final int[] drivers = {1,2,3,0};          //DriveTrain TalonSRXs
     public static final int[] shooterMaxes = {5,7};         //SparkMAXs for the SA shooter -> can also be PWM but with less functions
 
     //PWM Devices
-    public static final int collectMotor = 3;               //Spark for the OTB ball collector
-    public static final int[] feedMotors = {1,2};           //Sparks for feeder plate thing
-    public static final int beltMotor = 0;                  //Spark for belts up to shooter
+    public static final int collectMotor = 4;               //Spark for the OTB ball collector
+    public static final int[] feedMotors = {2,3};           //Sparks for feeder plate thing
+    public static final int beltMotor = 1;                  //Spark for belts up to shooter
 
     //PCM Numbers -> for pistons
     public static final int[] collectPistons = {0,1};       //Pistons that move the OTB collector over the bumper
@@ -31,7 +31,7 @@ public final class Constants {
 
     //numbers for subsystems/commands
     public static final double feedPower = .5;              //Power value for feeder sparks in Hopper subsystem
-    public static final double beltPower = .5;              //Power value for belt spark in Hopper subsystem
+    public static final double beltPower = .75;              //Power value for belt spark in Hopper subsystem
     public static final double shooterPower = 1;            //Power value for SparkMax's in Shooter subsystem
     public static final double beltDownPulse = .5;          //Timing for running the down pulse in AutoShoot
     public static final double collectSpeed = .7;           //Power value for the OTB collector
