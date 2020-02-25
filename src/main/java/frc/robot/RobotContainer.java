@@ -7,15 +7,17 @@
 
 package frc.robot;
 
+import com.analog.adis16448.frc.ADIS16448_IMU;
+
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.*;
+import frc.robot.commands.autoCommands.*;
 import frc.robot.subsystems.*;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.*;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -51,15 +53,15 @@ public class RobotContainer {
   private final MoveBalls hopp = new MoveBalls(hopper, () -> flight.getRawButtonPressed(2));    //currently runs with thumb button on flight stick
   private final Climb climb = new Climb(climber, () -> flight.getRawButtonPressed(12));         //currently runs with base button #12 on flight stick
 
-  //Auto command
-  // private final 
-
   //Shuffleboard/smartdashboard integration and statistics
-  private final UpdateStats sickTatsYo = new UpdateStats(stats, () -> {return true;});
+  private final UpdateStats updateStats = new UpdateStats(stats, () -> {return true;});
 
   //cameras
   private CameraServer camera1 = CameraServer.getInstance();
   private CameraServer camera2 = CameraServer.getInstance();
+
+  //IMUs
+  private ADIS16448_IMU imu = new ADIS16448_IMU();
 
   public RobotContainer() {
     //subsystem.setDefaultCommand(command);
@@ -68,7 +70,7 @@ public class RobotContainer {
     shooter.setDefaultCommand(shoot);
     hopper.setDefaultCommand(hopp);
     climber.setDefaultCommand(climb);
-    stats.setDefaultCommand(sickTatsYo);
+    stats.setDefaultCommand(updateStats);
 
     //start cameras
     camera1.startAutomaticCapture();
@@ -96,6 +98,32 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return null;
+    SmartDashboard.putString("Auto Select", "right");
+    String autoString = SmartDashboard.getString("Auto Select", "right");
+    SequentialCommandGroup auto;
+    if(autoString.equals("right")){
+      auto = new SequentialCommandGroup(
+        new AutoShoot(shooter, hopper, 7, false),
+        new AutoDrive(driveTrain, -.5, 0, 3),
+        new AutoCollect(collector, .5)
+      );
+    }
+    else if(autoString.equals("mid")){
+      auto = new SequentialCommandGroup(
+        new AutoShoot(shooter, hopper, 7, false),
+        new AutoTurn(driveTrain, imu, .5, 120),
+        new AutoDrive(driveTrain, -.5, 0, 33)
+      );
+    }
+    else{
+      auto = new SequentialCommandGroup(
+        new ParallelCommandGroup(
+          new AutoDrive(driveTrain, -.5, 0, 3),
+          new AutoCollect(collector, .5)
+        ),
+        new AutoTurn(driveTrain, imu, .5, 180)
+      );
+    }
+    return auto;
   }
 }

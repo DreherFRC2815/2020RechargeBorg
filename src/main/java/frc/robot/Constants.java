@@ -31,7 +31,7 @@ public final class Constants {
 
     //numbers for subsystems/commands
     public static final double feedPower = .5;              //Power value for feeder sparks in Hopper subsystem
-    public static final double beltPower = .75;              //Power value for belt spark in Hopper subsystem
+    public static final double beltPower = .75;             //Power value for belt spark in Hopper subsystem
     public static final double shooterPower = 1;            //Power value for SparkMax's in Shooter subsystem
     public static final double beltDownPulse = .5;          //Timing for running the down pulse in AutoShoot
     public static final double collectSpeed = .7;           //Power value for the OTB collector
