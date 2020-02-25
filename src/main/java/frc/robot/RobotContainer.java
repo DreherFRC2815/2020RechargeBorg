@@ -47,7 +47,7 @@ public class RobotContainer {
   
   //The button bindings for these can be changed here
   private final Collect collect = new Collect(collector, () -> xbox.getAButton());              //currently runs with the A button
-  private final Shoot shoot = new Shoot(shooter, () -> flight.getRawButton(1));                 //currently runs with the flight trigger
+  private final Shoot shoot = new Shoot(shooter, () -> flight.getRawButton(1));          //currently runs with the flight trigger
   
   //Unfinished commands -> need testing
   private final MoveBalls hopp = new MoveBalls(hopper, () -> flight.getRawButtonPressed(2));    //currently runs with thumb button on flight stick
@@ -98,7 +98,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    SmartDashboard.putString("Auto Select", "right");
+    SmartDashboard.putStringArray("Auto Select", new String[]{"right", "mid", "left"});
     String autoString = SmartDashboard.getString("Auto Select", "right");
     SequentialCommandGroup auto;
     if(autoString.equals("right")){

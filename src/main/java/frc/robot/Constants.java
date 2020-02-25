@@ -30,7 +30,7 @@ public final class Constants {
     public static final int[] climbPistons = {2,3,4,5};     //Pistons on the climber
 
     //numbers for subsystems/commands
-    public static final double feedPower = .5;              //Power value for feeder sparks in Hopper subsystem
+    public static final double feedPower = .25;              //Power value for feeder sparks in Hopper subsystem
     public static final double beltPower = .75;             //Power value for belt spark in Hopper subsystem
     public static final double shooterPower = 1;            //Power value for SparkMax's in Shooter subsystem
     public static final double beltDownPulse = .5;          //Timing for running the down pulse in AutoShoot

@@ -31,7 +31,7 @@ public class DriveTrain extends SubsystemBase {
 
     //grouping the talons in to left and right
     //One of the talons needed to be inverted, this is how you do that                                                                   b 
-    talons[1].setInverted(true);
+    talons[0].setInverted(true);
     SpeedControllerGroup left = new SpeedControllerGroup(talons[0], talons[1]);
     SpeedControllerGroup right = new SpeedControllerGroup(talons[2], talons[3]);
 

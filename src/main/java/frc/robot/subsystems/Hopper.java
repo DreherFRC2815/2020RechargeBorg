@@ -8,7 +8,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -34,7 +33,6 @@ public class Hopper extends SubsystemBase {
   public void runFeeders(boolean button){
     feeder[0].set(button ? Constants.feedPower : 0);
     feeder[1].set(button ? -Constants.feedPower : 0);
-    SmartDashboard.putNumber("Feeders", (button ? Constants.feedPower : 0));
   }
 
   //do-stuff method that runs the belt tower thing
