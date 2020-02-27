@@ -48,11 +48,11 @@ public class RobotContainer {
   
   //The button bindings for these can be changed here
   private final Collect collect = new Collect(collector, () -> xbox.getAButton());       //currently runs with the A button
-  private final Shoot shoot = new Shoot(shooter, () -> operate.getRawButton(5));          //currently runs with back-left button on operate xbox controller
+  private final Shoot shoot = new Shoot(shooter, () -> operate.getRawButton(6));         //currently runs with back-right button on operate xbox controller
   
   //Unfinished commands -> need testing
-  private final MoveBalls hopp = new MoveBalls(hopper, () -> operate.getRawButton(6));    //currently runs with back-right button on operate xbox controller
-  private final Climb climb = new Climb(climber, () -> operate.getAButtonPressed());         //currently runs with operate controller A button
+  private final MoveBalls hopp = new MoveBalls(hopper, () -> operate.getRawButton(5));   //currently runs with back-left button on operate xbox controller
+  private final Climb climb = new Climb(climber, () -> operate.getAButtonPressed());     //currently runs with operate controller A button
 
   //Shuffleboard/smartdashboard integration and statistics
   private final UpdateStats updateStats = new UpdateStats(stats, () -> {return true;});
