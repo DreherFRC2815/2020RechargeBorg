@@ -18,7 +18,8 @@ public class Climb extends CommandBase {
 
   //feeding inputs
   BooleanSupplier button;
-  int state = 0;
+  boolean state = false;
+  boolean extend = false;
 
   public Climb(Climber c, BooleanSupplier b) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -37,24 +38,13 @@ public class Climb extends CommandBase {
   public void execute() {
     //pressing the button will cause state to cycle between 0, 1, and 2
     if(button.getAsBoolean()){
-      state = (state + 1) % 4;
+      state = !state;
+      extend = true;
     }
     
     //the pistons will be extended in different combinations depending on the value of state
-    switch(state){
-      case 0:
-        climber.stageOne(false);
-        climber.stageTwo(false);
-        break;
-      case 2:
-        climber.stageOne(true);
-        climber.stageTwo(true);
-        break;
-      default:
-        climber.stageOne(true);
-        climber.stageTwo(false);
-        break;
-    }
+    climber.stageOne(extend);
+    climber.stageTwo(state);
   }
 
   // Called once the command ends or is interrupted.
