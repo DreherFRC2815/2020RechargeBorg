@@ -26,11 +26,11 @@ public final class Constants {
     public static final int beltMotor = 1;                  //Spark for belts up to shooter
 
     //PCM Numbers -> for pistons
-    public static final int[] collectPistons = {0,1};       //Pistons that move the OTB collector over the bumper
-    public static final int[] climbPistons = {2,3,4,5};     //Pistons on the climber
+    public static final int[] collectPistons = {2,3};       //Pistons that move the OTB collector over the bumper
+    public static final int[] climbPistons = {0,1,4,5};     //Pistons on the climber
 
     //numbers for subsystems/commands
-    public static final double feedPower = .25;              //Power value for feeder sparks in Hopper subsystem
+    public static final double feedPower = .15;             //Power value for feeder sparks in Hopper subsystem
     public static final double beltPower = .75;             //Power value for belt spark in Hopper subsystem
     public static final double shooterPower = 1;            //Power value for SparkMax's in Shooter subsystem
     public static final double beltDownPulse = .5;          //Timing for running the down pulse in AutoShoot

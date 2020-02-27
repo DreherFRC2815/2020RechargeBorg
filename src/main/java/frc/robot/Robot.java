@@ -8,8 +8,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandGroupBase;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.autoCommandGroups.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -21,6 +25,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
+  public static SendableChooser<CommandGroupBase> sendablechooser;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -31,6 +36,14 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+
+    sendablechooser = new SendableChooser<CommandGroupBase>();
+    sendablechooser.setDefaultOption("Right", new RightAutoBasic(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
+    sendablechooser.addOption("Mid", new MidAutoBasic(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
+    sendablechooser.addOption("Left", new LeftAutoBasic(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
+    SmartDashboard.putData("Auto", sendablechooser);
+
+
   }
 
   /**
@@ -65,9 +78,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    // m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    m_autonomousCommand = sendablechooser.getSelected();
 
-    // schedule the autonomous command (example)
+    // schedule the autonomous command.
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }

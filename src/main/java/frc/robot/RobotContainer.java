@@ -38,7 +38,8 @@ public class RobotContainer {
 
   //controllers
   XboxController xbox = new XboxController(0);
-  Joystick flight = new Joystick(1);
+  // Joystick flight = new Joystick(1);
+  XboxController operate = new XboxController(1);
 
   //commands -> use these to reconfigure button bindings later
   //button bindings use lambda expressions: look them up if you are confused
@@ -46,12 +47,12 @@ public class RobotContainer {
   private final Drive drive = new Drive(driveTrain, () -> xbox.getRawAxis(1), () -> xbox.getRawAxis(4));
   
   //The button bindings for these can be changed here
-  private final Collect collect = new Collect(collector, () -> xbox.getAButton());              //currently runs with the A button
-  private final Shoot shoot = new Shoot(shooter, () -> flight.getRawButton(1));          //currently runs with the flight trigger
+  private final Collect collect = new Collect(collector, () -> xbox.getAButton());       //currently runs with the A button
+  private final Shoot shoot = new Shoot(shooter, () -> operate.getRawButton(5));          //currently runs with back-left button on operate xbox controller
   
   //Unfinished commands -> need testing
-  private final MoveBalls hopp = new MoveBalls(hopper, () -> flight.getRawButtonPressed(2));    //currently runs with thumb button on flight stick
-  private final Climb climb = new Climb(climber, () -> flight.getRawButtonPressed(12));         //currently runs with base button #12 on flight stick
+  private final MoveBalls hopp = new MoveBalls(hopper, () -> operate.getRawButton(6));    //currently runs with back-right button on operate xbox controller
+  private final Climb climb = new Climb(climber, () -> operate.getAButtonPressed());         //currently runs with operate controller A button
 
   //Shuffleboard/smartdashboard integration and statistics
   private final UpdateStats updateStats = new UpdateStats(stats, () -> {return true;});
@@ -91,39 +92,56 @@ public class RobotContainer {
     //it can probably be deleted
   }
 
+  public DriveTrain getDriveTrain() {
+    return this.driveTrain;
+  }
 
+  public Collector getCollector() {
+    return this.collector;
+  }
+
+  public Shooter getShooter() {
+    return this.shooter;
+  }
+
+  public Hopper getHopper(){
+    return this.hopper;
+  }
+
+  public ADIS16448_IMU getImu(){
+    return this.imu;
+  }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    SmartDashboard.putStringArray("Auto Select", new String[]{"right", "mid", "left"});
-    String autoString = SmartDashboard.getString("Auto Select", "right");
-    SequentialCommandGroup auto;
-    if(autoString.equals("right")){
-      auto = new SequentialCommandGroup(
-        new AutoShoot(shooter, hopper, 7, false),
-        new AutoDrive(driveTrain, -.5, 0, 3),
-        new AutoCollect(collector, .5)
-      );
-    }
-    else if(autoString.equals("mid")){
-      auto = new SequentialCommandGroup(
-        new AutoShoot(shooter, hopper, 7, false),
-        new AutoTurn(driveTrain, imu, .5, 120),
-        new AutoDrive(driveTrain, -.5, 0, 33)
-      );
-    }
-    else{
-      auto = new SequentialCommandGroup(
-        new ParallelCommandGroup(
-          new AutoDrive(driveTrain, -.5, 0, 3),
-          new AutoCollect(collector, .5)
-        ),
-        new AutoTurn(driveTrain, imu, .5, 180)
-      );
-    }
-    return auto;
-  }
+  // public Command getAutonomousCommand(int autoSelect) {
+  //   SequentialCommandGroup auto;
+  //   if(autoString.equals("right")){
+  //     auto = new SequentialCommandGroup(
+  //       new AutoShoot(shooter, hopper, 7, false),
+  //       new AutoDrive(driveTrain, -.5, 0, 3),
+  //       new AutoCollect(collector, .5)
+  //     );
+  //   }
+  //   else if(autoString.equals("mid")){
+  //     auto = new SequentialCommandGroup(
+  //       new AutoShoot(shooter, hopper, 7, false),
+  //       new AutoTurn(driveTrain, imu, .5, 120),
+  //       new AutoDrive(driveTrain, -.5, 0, 33)
+  //     );
+  //   }
+  //   else{
+  //     auto = new SequentialCommandGroup(
+  //       new ParallelCommandGroup(
+  //         new AutoDrive(driveTrain, -.5, 0, 3),
+  //         new AutoCollect(collector, .5)
+  //       ),
+  //       new AutoTurn(driveTrain, imu, .5, 180)
+  //     );
+  //   }
+  //   return auto;
+  // }
+
 }
