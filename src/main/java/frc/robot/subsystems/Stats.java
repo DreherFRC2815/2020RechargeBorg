@@ -35,7 +35,7 @@ public class Stats extends SubsystemBase {
     SmartDashboard.putNumber("Battery Voltage", batteryVoltage);
     SmartDashboard.putNumber("Match Time", matchTime);
     SmartDashboard.putBoolean("Enabled", enabled);
-    SmartDashboard.putBoolean("Auto", auto);
+    //SmartDashboard.putBoolean("Auto", auto);
     System.out.println(SmartDashboard.getNumber("Slidey", 0));
   }
 

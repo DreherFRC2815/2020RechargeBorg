@@ -22,7 +22,7 @@ public final class Constants {
 
     //PWM Devices
     public static final int collectMotor = 4;               //Spark for the OTB ball collector
-    public static final int[] feedMotors = {2,3};           //Sparks for feeder plate thing
+    public static final int[] feedMotors = {2,0};           //Sparks for feeder plate thing
     public static final int beltMotor = 1;                  //Spark for belts up to shooter
 
     //PCM Numbers -> for pistons
