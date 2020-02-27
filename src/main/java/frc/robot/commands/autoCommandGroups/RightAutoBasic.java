@@ -23,8 +23,10 @@ public class RightAutoBasic extends SequentialCommandGroup {
   public RightAutoBasic(DriveTrain driveTrain, Shooter shooter, Hopper hopper, Collector collector, ADIS16448_IMU imu) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    new AutoShoot(shooter, hopper, 7, false);
-    new AutoDrive(driveTrain, -.5, 0, 3);
-    new AutoCollect(collector, .5);
+    super(
+      new AutoShoot(shooter, hopper, 7, false),
+      new AutoDrive(driveTrain, -.5, 0, 3),
+      new AutoCollect(collector, .5)
+    );
   }
 }

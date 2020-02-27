@@ -111,6 +111,10 @@ public class RobotContainer {
   public ADIS16448_IMU getImu(){
     return this.imu;
   }
+
+  //VERY IMPORTANT!!!!!!! :: AUTO SELECTION NOW OCCURS WITH A SENDABLECHOOSER OBJECT WHICH APPEARS IN THE ROBOT CLASS
+  //THIS AUTO STYLE MAKES HAVING SEPARATE PRECODED AUTO PATHS NECESSARY!!!!!!!!
+
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *

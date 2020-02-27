@@ -42,8 +42,6 @@ public class Robot extends TimedRobot {
     sendablechooser.addOption("Mid", new MidAutoBasic(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
     sendablechooser.addOption("Left", new LeftAutoBasic(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
     SmartDashboard.putData("Auto", sendablechooser);
-
-
   }
 
   /**
