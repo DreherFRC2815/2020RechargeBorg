@@ -11,13 +11,10 @@ import com.analog.adis16448.frc.ADIS16448_IMU;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
+// import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.*;
-import frc.robot.commands.autoCommands.*;
 import frc.robot.subsystems.*;
-import edu.wpi.first.wpilibj2.command.*;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
