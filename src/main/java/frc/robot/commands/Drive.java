@@ -18,13 +18,13 @@ public class Drive extends CommandBase {
   private final DriveTrain train;
 
   //what inputs does this command feed in to a subsystems
-  private final DoubleSupplier foreward;
+  private final DoubleSupplier forward;
   private final DoubleSupplier turn;
 
   //constructor
   public Drive(DriveTrain d, DoubleSupplier f, DoubleSupplier t) {
     train = d;
-    foreward = f;
+    forward = f;
     turn = t;
     //The code template tells us to use this method
     addRequirements(train);
@@ -39,7 +39,7 @@ public class Drive extends CommandBase {
   @Override
   public void execute() {
     //getting current input values and feeding them in to the subsystem
-    train.driveArcade(foreward.getAsDouble(), turn.getAsDouble());
+    train.driveArcade(forward.getAsDouble(), turn.getAsDouble());
   }
 
   // Called once the command ends or is interrupted.

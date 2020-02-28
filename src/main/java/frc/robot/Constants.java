@@ -21,8 +21,8 @@ public final class Constants {
     public static final int[] shooterMaxes = {5,7};         //SparkMAXs for the SA shooter -> can also be PWM but with less functions
 
     //PWM Devices
-    public static final int collectMotor = 4;               //Spark for the OTB ball collector
-    public static final int[] feedMotors = {2,0};           //Sparks for feeder plate thing
+    public static final int collectMotor = 0;               //Spark for the OTB ball collector
+    public static final int[] feedMotors = {2,3};           //Sparks for feeder plate thing
     public static final int beltMotor = 1;                  //Spark for belts up to shooter
 
     //PCM Numbers -> for pistons
@@ -30,9 +30,9 @@ public final class Constants {
     public static final int[] climbPistons = {1,0,4,5};     //Pistons on the climber
 
     //numbers for subsystems/commands
-    public static final double feedPower = .15;             //Power value for feeder sparks in Hopper subsystem
+    public static final double feedPower = .3;              //Power value for feeder sparks in Hopper subsystem
     public static final double beltPower = .6;              //Power value for belt spark in Hopper subsystem
-    public static final double shooterPower = 1;            //Power value for SparkMax's in Shooter subsystem
+    public static final double shooterPower = .9;           //Power value for SparkMax's in Shooter subsystem
     public static final double beltDownPulse = .5;          //Timing for running the down pulse in AutoShoot
     public static final double collectSpeed = .7;           //Power value for the OTB collector
 }

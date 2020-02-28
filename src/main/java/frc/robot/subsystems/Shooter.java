@@ -39,6 +39,13 @@ public class Shooter extends SubsystemBase {
     maxes[1].set(b ? Constants.shooterPower : 0);
   }
 
+  public double getEncoder(){
+    if (encoders.length <= 0){
+      return 0;
+    }
+    return encoders[1].getVelocity();
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

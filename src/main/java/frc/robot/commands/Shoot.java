@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import java.util.function.BooleanSupplier;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Shooter;
 
@@ -35,6 +36,7 @@ public class Shoot extends CommandBase {
   @Override
   public void execute() {
     shooter.shoot(button.getAsBoolean());
+    SmartDashboard.putNumber("Shooter Encoders", shooter.getEncoder());
   }
 
   // Called once the command ends or is interrupted.

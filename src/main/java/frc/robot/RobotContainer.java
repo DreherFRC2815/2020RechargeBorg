@@ -27,8 +27,6 @@ public class RobotContainer {
   private final DriveTrain driveTrain = new DriveTrain();
   private final Collector collector = new Collector();
   private final Shooter shooter = new Shooter();
-
-  //Unfinished subsystems -> need testing
   private final Hopper hopper = new Hopper();
   private final Climber climber = new Climber();
 
@@ -43,16 +41,22 @@ public class RobotContainer {
   private final Drive drive = new Drive(driveTrain, () -> xbox.getRawAxis(1), () -> xbox.getRawAxis(4));
   
   //The button bindings for these can be changed here
-  private final Collect collect = new Collect(collector, () -> xbox.getAButton());       //currently runs with the A button
-  private final Shoot shoot = new Shoot(shooter, () -> operate.getRawButton(6));         //currently runs with back-right button on operate xbox controller
+
+  //currently runs with the A button
+  private final Collect collect = new Collect(collector, () -> xbox.getAButton());
+
+  //currently runs with back-right button on operate xbox controller
+  private final Shoot shoot = new Shoot(shooter, () -> operate.getRawButton(6));
+
+  //currently runs with back-left button and B button on operate xbox controller
+  private final MoveBalls hopp = new MoveBalls(hopper, () -> operate.getRawButton(5), () -> operate.getBButton());
   
-  //Unfinished commands -> need testing
-  private final MoveBalls hopp = new MoveBalls(hopper, () -> operate.getRawButtonPressed(5));   //currently runs with back-left button on operate xbox controller
-  private final Climb climb = new Climb(climber, () -> operate.getAButtonPressed());     //currently runs with operate controller A button
+  //currently runs with operate controller A button
+  private final Climb climb = new Climb(climber, () -> operate.getAButtonPressed());
 
   //cameras
-  private CameraServer camera1 = CameraServer.getInstance();
-  private CameraServer camera2 = CameraServer.getInstance();
+  CameraServer camera1 = CameraServer.getInstance();
+  CameraServer camera2 = CameraServer.getInstance();
 
   //IMUs
   private ADIS16448_IMU imu = new ADIS16448_IMU();

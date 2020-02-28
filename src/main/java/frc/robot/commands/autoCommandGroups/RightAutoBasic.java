@@ -24,9 +24,10 @@ public class RightAutoBasic extends SequentialCommandGroup {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(
-      new AutoShoot(shooter, hopper, 7, false),
-      new AutoDrive(driveTrain, -.5, 0, 3),
-      new AutoCollect(collector, .5)
+      new AutoShoot(shooter, hopper, 4, false),
+      new AutoDrive(driveTrain, -.7, 0, 3),
+      new AutoCollect(collector, .7),
+      new AutoTurn(driveTrain, imu, .5, 180)
     );
   }
 }

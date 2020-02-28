@@ -18,11 +18,13 @@ public class MoveBalls extends CommandBase {
 
   //inputs to feed
   private BooleanSupplier button;
+  private BooleanSupplier negate;
   private boolean running = false;
 
-  public MoveBalls(Hopper h, BooleanSupplier b) {
+  public MoveBalls(Hopper h, BooleanSupplier b, BooleanSupplier n) {
     hopper = h;
     button = b;
+    negate = n;
     addRequirements(hopper);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -35,9 +37,9 @@ public class MoveBalls extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    running = button.getAsBoolean() ? !running : running;
+    running = button.getAsBoolean() /*? !running : running*/;
     hopper.runFeeders(running);
-    hopper.runBelts(running, false);
+    hopper.runBelts(running, negate.getAsBoolean());
   }
 
   // Called once the command ends or is interrupted.

@@ -30,7 +30,7 @@ public class Hopper extends SubsystemBase {
   //notice that one of the motors runs in a negative direction
   public void runFeeders(boolean button){
     feeder[0].set(button ? Constants.feedPower : 0);
-    feeder[1].set(button ? -Constants.feedPower : 0);
+    feeder[1].set(button ? Constants.feedPower : 0);
   }
 
   //do-stuff method that runs the belt tower thing

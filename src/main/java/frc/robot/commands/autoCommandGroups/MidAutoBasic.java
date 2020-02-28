@@ -24,9 +24,9 @@ public class MidAutoBasic extends SequentialCommandGroup {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(
-      new AutoShoot(shooter, hopper, 7, false),
-      new AutoTurn(driveTrain, imu, .5, 120),
-      new AutoDrive(driveTrain, -.5, 0, 33)
+      new AutoShoot(shooter, hopper, 4, false),
+      new AutoTurn(driveTrain, imu, .7, 150),
+      new AutoDrive(driveTrain, -.7, 0, 3)
     );
   }
 }
