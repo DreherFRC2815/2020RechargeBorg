@@ -27,7 +27,6 @@ public class RobotContainer {
   private final DriveTrain driveTrain = new DriveTrain();
   private final Collector collector = new Collector();
   private final Shooter shooter = new Shooter();
-  // private final Stats stats = new Stats();
 
   //Unfinished subsystems -> need testing
   private final Hopper hopper = new Hopper();
@@ -50,9 +49,6 @@ public class RobotContainer {
   //Unfinished commands -> need testing
   private final MoveBalls hopp = new MoveBalls(hopper, () -> operate.getRawButtonPressed(5));   //currently runs with back-left button on operate xbox controller
   private final Climb climb = new Climb(climber, () -> operate.getAButtonPressed());     //currently runs with operate controller A button
-
-  //Shuffleboard/smartdashboard integration and statistics
-  // private final UpdateStats updateStats = new UpdateStats(stats, () -> {return true;});
 
   //cameras
   private CameraServer camera1 = CameraServer.getInstance();
