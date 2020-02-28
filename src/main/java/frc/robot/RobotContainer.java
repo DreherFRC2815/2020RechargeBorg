@@ -114,31 +114,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   // public Command getAutonomousCommand(int autoSelect) {
-  //   SequentialCommandGroup auto;
-  //   if(autoString.equals("right")){
-  //     auto = new SequentialCommandGroup(
-  //       new AutoShoot(shooter, hopper, 7, false),
-  //       new AutoDrive(driveTrain, -.5, 0, 3),
-  //       new AutoCollect(collector, .5)
-  //     );
-  //   }
-  //   else if(autoString.equals("mid")){
-  //     auto = new SequentialCommandGroup(
-  //       new AutoShoot(shooter, hopper, 7, false),
-  //       new AutoTurn(driveTrain, imu, .5, 120),
-  //       new AutoDrive(driveTrain, -.5, 0, 33)
-  //     );
-  //   }
-  //   else{
-  //     auto = new SequentialCommandGroup(
-  //       new ParallelCommandGroup(
-  //         new AutoDrive(driveTrain, -.5, 0, 3),
-  //         new AutoCollect(collector, .5)
-  //       ),
-  //       new AutoTurn(driveTrain, imu, .5, 180)
-  //     );
-  //   }
-  //   return auto;
   // }
 
 }

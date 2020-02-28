@@ -29,9 +29,10 @@ public class DriveTrain extends SubsystemBase {
       talons[i] = new WPI_TalonSRX(Constants.drivers[i]);
     }
 
-    //grouping the talons in to left and right
     //One of the talons needed to be inverted, this is how you do that                                                                   b 
     talons[0].setInverted(true);
+    
+    //grouping the talons in to left and right
     SpeedControllerGroup left = new SpeedControllerGroup(talons[0], talons[1]);
     SpeedControllerGroup right = new SpeedControllerGroup(talons[2], talons[3]);
 

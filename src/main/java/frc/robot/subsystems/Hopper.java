@@ -12,9 +12,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Hopper extends SubsystemBase {
-  /**
-   * Creates a new Hopper.
-   */
   //sparks for the trapezoid feeder thing
   private Spark[] feeder = new Spark[2];
 
@@ -30,6 +27,7 @@ public class Hopper extends SubsystemBase {
   }
 
   //do-stuff method that runs the feeder things
+  //notice that one of the motors runs in a negative direction
   public void runFeeders(boolean button){
     feeder[0].set(button ? Constants.feedPower : 0);
     feeder[1].set(button ? -Constants.feedPower : 0);
