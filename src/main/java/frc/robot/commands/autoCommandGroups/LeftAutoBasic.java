@@ -24,11 +24,16 @@ public class LeftAutoBasic extends SequentialCommandGroup {
   public LeftAutoBasic(DriveTrain driveTrain, Shooter shooter, Hopper hopper, Collector collector, ADIS16448_IMU imu) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    super(new ParallelCommandGroup(
-        new AutoDrive(driveTrain, -.5, 0, 3),
-        new AutoCollect(collector, .5)
-      ),
-      new AutoTurn(driveTrain, imu, .5, 180)
+    // super(new ParallelCommandGroup(
+    //     new AutoDrive(driveTrain, -.5, 0, 3),
+    //     new AutoCollect(collector, .5)
+    //   ),
+    //   new AutoTurn(driveTrain, imu, .5, 180)
+    // );
+    super(
+      new AutoShoot(shooter, hopper, 4, false),
+      new AutoTurn(driveTrain, imu, -.7, 150),
+      new AutoDrive(driveTrain, -.7, 0, 1.5)
     );
   }
 }

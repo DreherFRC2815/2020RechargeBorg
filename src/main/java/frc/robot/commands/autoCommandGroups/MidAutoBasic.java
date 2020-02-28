@@ -26,7 +26,7 @@ public class MidAutoBasic extends SequentialCommandGroup {
     super(
       new AutoShoot(shooter, hopper, 4, false),
       new AutoTurn(driveTrain, imu, .7, 150),
-      new AutoDrive(driveTrain, -.7, 0, 3)
+      new AutoDrive(driveTrain, -.7, 0, 1.5)
     );
   }
 }
