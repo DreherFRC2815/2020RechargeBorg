@@ -22,7 +22,7 @@ public final class Constants {
 
     //PWM Devices
     public static final int collectMotor = 0;               //Spark for the OTB ball collector
-    public static final int[] feedMotors = {2,3};           //Sparks for feeder plate thing
+    public static final int[] feedMotors = {2,5};           //Sparks for feeder plate thing
     public static final int beltMotor = 1;                  //Spark for belts up to shooter
 
     //PCM Numbers -> for pistons
@@ -34,5 +34,5 @@ public final class Constants {
     public static final double beltPower = .6;              //Power value for belt spark in Hopper subsystem
     public static final double shooterPower = .9;           //Power value for SparkMax's in Shooter subsystem
     public static final double beltDownPulse = .5;          //Timing for running the down pulse in AutoShoot
-    public static final double collectSpeed = .7;           //Power value for the OTB collector
+    public static final double collectSpeed = .6;           //Power value for the OTB collector
 }
