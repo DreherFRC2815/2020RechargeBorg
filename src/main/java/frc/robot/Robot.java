@@ -39,9 +39,9 @@ public class Robot extends TimedRobot {
 
     //rename the auto sets later -> for now, these will work with the proper selections
     sendablechooser = new SendableChooser<CommandGroupBase>();
-    sendablechooser.setDefaultOption("Straight on", new RightAutoBasic(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
-    sendablechooser.addOption("Curved to center", new MidAutoBasic(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
-    sendablechooser.addOption("Curved to edge", new LeftAutoBasic(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
+    sendablechooser.setDefaultOption("Straight on", new DirectlyAimed(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
+    sendablechooser.addOption("Curved to center", new CurvedTowardCenter(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
+    sendablechooser.addOption("Curved to edge", new CurvedTowardEdge(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
     SmartDashboard.putData("Auto", sendablechooser);
   }
 

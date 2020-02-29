@@ -16,11 +16,11 @@ import frc.robot.subsystems.*;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class RightAutoBasic extends SequentialCommandGroup {
+public class DirectlyAimed extends SequentialCommandGroup {
   /**
    * Creates a new RightAutoBasic.
    */
-  public RightAutoBasic(DriveTrain driveTrain, Shooter shooter, Hopper hopper, Collector collector, ADIS16448_IMU imu) {
+  public DirectlyAimed(DriveTrain driveTrain, Shooter shooter, Hopper hopper, Collector collector, ADIS16448_IMU imu) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(

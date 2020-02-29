@@ -9,7 +9,6 @@ package frc.robot.commands.autoCommandGroups;
 
 import com.analog.adis16448.frc.ADIS16448_IMU;
 
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.autoCommands.*;
 import frc.robot.subsystems.*;
@@ -17,22 +16,16 @@ import frc.robot.subsystems.*;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class LeftAutoBasic extends SequentialCommandGroup {
+public class CurvedTowardCenter extends SequentialCommandGroup {
   /**
-   * Creates a new LeftAutoBasic.
+   * Creates a new MidAutoBasic.
    */
-  public LeftAutoBasic(DriveTrain driveTrain, Shooter shooter, Hopper hopper, Collector collector, ADIS16448_IMU imu) {
+  public CurvedTowardCenter(DriveTrain driveTrain, Shooter shooter, Hopper hopper, Collector collector, ADIS16448_IMU imu) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    // super(new ParallelCommandGroup(
-    //     new AutoDrive(driveTrain, -.5, 0, 3),
-    //     new AutoCollect(collector, .5)
-    //   ),
-    //   new AutoTurn(driveTrain, imu, .5, 180)
-    // );
     super(
       new AutoShoot(shooter, hopper, 4, false),
-      new AutoTurn(driveTrain, imu, -.7, 150),
+      new AutoTurn(driveTrain, imu, .7, 150),
       new AutoDrive(driveTrain, -.7, 0, 1.5)
     );
   }
