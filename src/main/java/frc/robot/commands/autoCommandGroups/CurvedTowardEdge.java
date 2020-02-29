@@ -8,8 +8,6 @@
 package frc.robot.commands.autoCommandGroups;
 
 import com.analog.adis16448.frc.ADIS16448_IMU;
-
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.autoCommands.*;
 import frc.robot.subsystems.*;

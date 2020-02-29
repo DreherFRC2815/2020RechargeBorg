@@ -56,6 +56,7 @@ public class AutoShoot extends CommandBase {
     }
     else if(timer.get() < time){
       hopper.runBelts(true, false);
+      // hopper.runFeeders(true);
       shooter.shoot(true);
     }
     else{
