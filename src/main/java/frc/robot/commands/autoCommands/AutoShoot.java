@@ -22,15 +22,17 @@ public class AutoShoot extends CommandBase {
   private double time;
   private boolean downPulse;
   private boolean done = false;
+  private boolean trapezoid;
 
   private Timer timer = new Timer();
   
-  public AutoShoot(Shooter s, Hopper h, double t, boolean dP) {
+  public AutoShoot(Shooter s, Hopper h, double t, boolean dP, boolean trap) {
     // Use addRequirements() here to declare subsystem dependencies.
     shooter = s;
     hopper = h;
     time = t;
     downPulse = dP;
+    trapezoid = trap;
     addRequirements(shooter, hopper);
   }
 
@@ -56,10 +58,12 @@ public class AutoShoot extends CommandBase {
     }
     else if(timer.get() < time){
       hopper.runBelts(true, false);
-      // hopper.runFeeders(true);
+      hopper.runFeeders(trapezoid);
       shooter.shoot(true);
     }
     else{
+      hopper.runBelts(false, false);
+      hopper.runFeeders(false);
       done = true;
     }
   }

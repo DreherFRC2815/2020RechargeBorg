@@ -31,7 +31,7 @@ public class CurvedTowardEdge extends SequentialCommandGroup {
 
     //initally LeftAutoBasic
     super(
-      new AutoShoot(shooter, hopper, 4, false),
+      new AutoShoot(shooter, hopper, 4, false, true),
       new AutoTurn(driveTrain, imu, -.7, 150),
       new AutoDrive(driveTrain, -.7, 0, 1.5)
     );

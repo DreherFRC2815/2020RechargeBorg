@@ -24,7 +24,7 @@ public class CurvedTowardCenter extends SequentialCommandGroup {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(
-      new AutoShoot(shooter, hopper, 4, false),
+      new AutoShoot(shooter, hopper, 4, false, true),
       new AutoTurn(driveTrain, imu, .7, 150),
       new AutoDrive(driveTrain, -.7, 0, 1.5)
     );

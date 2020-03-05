@@ -42,6 +42,7 @@ public class Robot extends TimedRobot {
     sendablechooser.setDefaultOption("Straight on", new DirectlyAimed(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
     sendablechooser.addOption("Curved to center", new CurvedTowardCenter(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
     sendablechooser.addOption("Curved to edge", new CurvedTowardEdge(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
+    sendablechooser.addOption("Trench Shot", new BasicAutoCommandGroup(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
     SmartDashboard.putData("Auto", sendablechooser);
   }
 
