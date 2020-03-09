@@ -37,12 +37,14 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
 
-    //rename the auto sets later -> for now, these will work with the proper selections
+    //each selectable option represents a different auto sequence that will run general input format is driver shooter hopper collector imu
     sendablechooser = new SendableChooser<CommandGroupBase>();
-    sendablechooser.setDefaultOption("Straight on", new DirectlyAimed(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
+
+    sendablechooser.setDefaultOption("Straight on", new DirectlyAimed(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));    
     sendablechooser.addOption("Curved to center", new CurvedTowardCenter(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
     sendablechooser.addOption("Curved to edge", new CurvedTowardEdge(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
-    sendablechooser.addOption("Trench Shot", new BasicAutoCommandGroup(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
+    sendablechooser.addOption("Trench Run", new TrenchRun(m_robotContainer.getDriveTrain(), m_robotContainer.getShooter(), m_robotContainer.getHopper(), m_robotContainer.getCollector(), m_robotContainer.getImu()));
+    
     SmartDashboard.putData("Auto", sendablechooser);
   }
 
