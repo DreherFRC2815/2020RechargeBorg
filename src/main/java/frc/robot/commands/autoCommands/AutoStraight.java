@@ -20,7 +20,7 @@ public class AutoStraight extends CommandBase {
 
   //inputs
   private final double power, time;
-  private final float adjust = .05f;
+  private final float adjust = .1f;
 
   //timer
   Timer timer = new Timer();
@@ -44,13 +44,13 @@ public class AutoStraight extends CommandBase {
   public void execute() {
     if(timer.get() < time){
       if(imu.getAngle() > 7) {
-
+        driveTrain.driveArcade(power, adjust);
       }
       else if(imu.getAngle() < -7) {
-
+        driveTrain.driveArcade(power, -adjust);
       }
       else {
-
+        driveTrain.driveArcade(power, 0);
       }
     }
     else{
